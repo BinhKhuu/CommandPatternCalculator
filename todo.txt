@@ -1,0 +1,2 @@
+add command tests.
+add redo command.

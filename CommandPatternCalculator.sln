@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPatternCalculator", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPatternCalculatorTests", "CommandPatternCalculatorTests\CommandPatternCalculatorTests.csproj", "{65AE44DE-4812-4134-9850-0C557ABD1C5B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27980FF2-B103-4218-9A16-2EDCB88A31DE}"
+	ProjectSection(SolutionItems) = preProject
+		todo.txt = todo.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
