@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CommandPatternCalculator.Commands
 {
-    public class MultiplyCommand
+    public class MultiplyCommand : ICommand
     {
         private ICalculator _calcualtor;
         private double _operand;

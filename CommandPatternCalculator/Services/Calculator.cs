@@ -19,18 +19,18 @@ namespace CommandPatternCalculator.Services
         public void Add(double operand)
         {
             Result += operand;
-            PrintResults(operand);
+            PrintResults(operand, "Added");
         }
 
         public void Subtract(double operand)
         {
             Result -= operand;
-            PrintResults(operand);
+            PrintResults(operand, "Subtracted");
         }
         public void Multiply(double operand)
         {
             Result *= operand;
-            PrintResults(operand);
+            PrintResults(operand, "Multiplied");
         }
 
         public void Divide(double operand)
@@ -40,11 +40,11 @@ namespace CommandPatternCalculator.Services
                 throw new DivideByZeroException();
             }
             Result /= operand;
-            PrintResults(operand);
+            PrintResults(operand, "Divided");
         }
-        private void PrintResults(double operand)
+        private void PrintResults(double operand, string command)
         {
-            Console.WriteLine($"Added {operand}, result is now {Result}");
+            Console.WriteLine($"{command} {operand}, result is now {Result}");
         }
 
 

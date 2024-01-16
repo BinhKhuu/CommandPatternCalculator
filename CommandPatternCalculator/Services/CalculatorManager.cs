@@ -27,8 +27,10 @@ namespace CommandPatternCalculator.Services
                     command = new SubtractCommand(_calculator, operand);
                     break;
                 case '*':
+                    command = new MultiplyCommand(_calculator, operand);
                     break;
                 case '/':
+                    command = new DivideCommand(_calculator, operand);
                     break;
             }
             command.Execute();
