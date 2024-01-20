@@ -7,4 +7,5 @@ calculator.Add(2.90);
 calculator.Add(2.90);
 // command manager 
 var calculatorCommandManager = new CalculatorCommandManger();
-calculatorCommandManager.Compute('*', 10);
+calculatorCommandManager.Compute('*',0 );
+calculatorCommandManager.Undo();
