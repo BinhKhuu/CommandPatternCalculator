@@ -37,5 +37,13 @@ namespace CommandPatternCalculator.Commands
             command.Execute();
             _commandHistory.Push(command);
         }
+
+        public ICommand PeekCommand()
+        {
+            if (_commandHistory.Count == 0)
+                return null;
+
+            return _commandHistory.Peek();
+        }
     }
 }

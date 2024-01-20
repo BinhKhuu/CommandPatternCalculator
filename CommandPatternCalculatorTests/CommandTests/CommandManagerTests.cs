@@ -29,16 +29,17 @@ namespace CommandPatternCalculatorTests.CommandTests
         [InlineData('/', 1, typeof(DivideCommand))]
         [InlineData('*', 1, typeof(MultiplyCommand))]
         [InlineData('-', 1, typeof(SubtractCommand))]
-        public void CommandManagerShouldExecuteCorrectOperations(char @operator, double operand, Type expectedResults)
+        public void CommandManagerShouldExecuteCorrectOperationsAndAddHistory(char @operator, double operand, Type expectedResults)
         {
             var calculatorCommandManager = new CalculatorCommandManger();
             
             calculatorCommandManager.Compute(@operator, operand);
-            var history = calculatorCommandManager.CommandHistory;
-            var commandType = history[0].GetType();
-
-            // Assert.IsType<T> is a generic method and requires a compile-time constant type. can't use it with Type
-            Assert.Equal(expectedResults, commandType);
+            var commandType = calculatorCommandManager.PeekCommand();
+            
+            Assert.NotNull(commandType);
+            Assert.Equal(expectedResults, commandType.GetType());
         }
+
+
     }
 }
