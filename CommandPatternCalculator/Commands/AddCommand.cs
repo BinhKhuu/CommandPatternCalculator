@@ -12,6 +12,15 @@ namespace CommandPatternCalculator.Commands
     {
         private ICalculator _calcualtor;
         private double _operand;
+
+        public double Operand
+        {
+            get
+            {
+                return _operand;
+            }
+        }
+
         public AddCommand(ICalculator calculator, double operand) {
             _calcualtor = calculator;
             _operand = operand;

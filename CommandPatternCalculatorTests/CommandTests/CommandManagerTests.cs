@@ -40,6 +40,24 @@ namespace CommandPatternCalculatorTests.CommandTests
             Assert.Equal(expectedResults, commandType.GetType());
         }
 
+        [Theory]
+        [InlineData('+', 1, 1)]
+        [InlineData('-', 1, 1)]
+        [InlineData('*', 2, 1)]
+        [InlineData('/', 2, 1)]
+        [InlineData('*', 0, 0)]
+        public void StartingTotalOne_CommandManagerShouldUndoLastCommand(char @operator, double operand, double expectedResult)
+        {
+            var calculatorCommandManager = new CalculatorCommandManger();
+            // if starting total = 0 set to one
+            if (calculatorCommandManager.Total == 0)
+                calculatorCommandManager.Compute('+', 1);
 
+            calculatorCommandManager.Compute(@operator, operand);            
+            calculatorCommandManager.Undo();
+
+            Assert.Equal(expectedResult, calculatorCommandManager.Total);
+            
+        }
     }
 }

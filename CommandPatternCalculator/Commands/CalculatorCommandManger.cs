@@ -17,7 +17,13 @@ namespace CommandPatternCalculator.Commands
             get { return _commandHistory.ToList().AsReadOnly(); }
             private set { }
         }
-
+        public double Total
+        {
+            get
+            {
+                return _calculator.Result;
+            }
+        }
         private readonly Calculator _calculator;
         public CalculatorCommandManger() 
         {
@@ -44,6 +50,29 @@ namespace CommandPatternCalculator.Commands
                 return null;
 
             return _commandHistory.Peek();
+        }
+
+        public void Undo()
+        {
+
+            try
+            {
+                // to undo a command find the opposite operation
+                var command = _commandHistory.Pop();
+                ICommand undoCommand = command.GetType() switch
+                {
+                    Type t when t == typeof(AddCommand) => new SubtractCommand(_calculator, command.Operand),
+                    Type t when t == typeof(SubtractCommand) => new AddCommand(_calculator, command.Operand),
+                    Type t when t == typeof(MultiplyCommand) => new DivideCommand(_calculator, command.Operand),
+                    Type t when t == typeof(DivideCommand) => new MultiplyCommand(_calculator, command.Operand)
+                };
+                undoCommand.Execute();
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("Attempted to undo multiply when total is 0");
+
+            }
         }
     }
 }
