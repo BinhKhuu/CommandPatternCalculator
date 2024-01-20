@@ -58,6 +58,9 @@ namespace CommandPatternCalculator.Commands
             try
             {
                 // to undo a command find the opposite operation
+                if (_commandHistory.Count == 0)
+                    return;
+
                 var command = _commandHistory.Pop();
                 ICommand undoCommand = command.GetType() switch
                 {

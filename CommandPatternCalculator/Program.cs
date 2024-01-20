@@ -9,3 +9,5 @@ calculator.Add(2.90);
 var calculatorCommandManager = new CalculatorCommandManger();
 calculatorCommandManager.Compute('*',0 );
 calculatorCommandManager.Undo();
+calculatorCommandManager.Undo();
+calculatorCommandManager.Undo();

@@ -59,5 +59,14 @@ namespace CommandPatternCalculatorTests.CommandTests
             Assert.Equal(expectedResult, calculatorCommandManager.Total);
             
         }
+
+        [Fact]
+        public void NothingUndoneWhenThereIsNoHistory()
+        {
+            var calculatorCommandManager = new CalculatorCommandManger();
+            calculatorCommandManager.Undo();
+
+            Assert.Empty(calculatorCommandManager.CommandHistory);
+        }
     }
 }
