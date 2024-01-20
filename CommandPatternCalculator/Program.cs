@@ -1,11 +1,10 @@
-﻿using CommandPatternCalculator.Services;
+﻿using CommandPatternCalculator.Commands;
+using CommandPatternCalculator.Services;
 
 // client interact directly to receiver 
 var calculator = new Calculator();
 calculator.Add(2.90);
 
-
-// client interacts with command manager adding layer between the calculator and the client
-var calculatorManager = new CalculatorManager();
-//calculatorManager.Compute('+', 5.0);
-calculatorManager.Compute('/', 1);
+// command manager 
+var calculatorCommandManager = new CalculatorCommandManger();
+calculatorCommandManager.Compute('*', 10);
